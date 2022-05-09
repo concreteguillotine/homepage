@@ -1,0 +1,14 @@
+<div class="article">
+<h1><%= @article.name %></h1>
+
+<p><%= simple_format(@article.description) %></p>
+
+<% if @article.attachment.present? %>
+    <h4> Attachment </h4>
+    <div class="attachment">
+        <p>
+            <%= link_to @article.attachment.filename, rails_blob_path(@article.attachment, disposition: 'attachment') %>
+        </p>
+    </div>
+<% end %>
+</div>

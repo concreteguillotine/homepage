@@ -72,3 +72,11 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "bootstrap_form", "~> 5.0"
+
+gem "bootstrap", "~> 5.1"
+
+gem "activeadmin"
+
+gem "devise"
