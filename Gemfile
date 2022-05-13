@@ -77,4 +77,5 @@ gem "bootstrap_form", "~> 5.0"
 
 gem "bootstrap", "~> 5.1"
 
-gem "devise"
+
+gem "devise", "~> 4.8"

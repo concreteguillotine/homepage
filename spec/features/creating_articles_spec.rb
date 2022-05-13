@@ -1,9 +1,12 @@
 require "rails_helper"
 
 RSpec.feature "user can upload text documents" do
-    scenario "with article details and an attachment" do
 
+    before do
+        login_as(FactoryBot.create(:admin))
         visit "/"
+
+    scenario "with article details and an attachment" do
 
         click_link "Upload Article"
         fill_in "Title", with: "First Program Tutorial"
