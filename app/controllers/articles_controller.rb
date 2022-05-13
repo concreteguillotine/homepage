@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
 
     def create
         @article = Article.new(article_params)
+        @article.author = current_admin
 
         if @article.save
             flash[:notice] = "Article has been uploaded!"
