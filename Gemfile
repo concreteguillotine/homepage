@@ -77,6 +77,4 @@ gem "bootstrap_form", "~> 5.0"
 
 gem "bootstrap", "~> 5.1"
 
-gem "activeadmin"
-
 gem "devise"
