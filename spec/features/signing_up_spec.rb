@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "user can sign in as admin" do
+RSpec.feature "user can sign up as admin" do
     scenario "with username and password" do
 
         visit "/admins/sign_up"

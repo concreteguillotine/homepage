@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <% if admin_signed_in? %>
+      <div class="login-text">
+        "Hello Seth :)"
+      </div>
+    <% end %>
+
     <%= yield %>
     <% flash.each do |key, message| %>
       <div><%= message %></div>
