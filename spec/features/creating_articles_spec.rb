@@ -5,7 +5,7 @@ RSpec.feature "user can upload text documents" do
 
     before do
         login_as(admin)
-        visit "/"
+        visit "/admin"
     end
 
     scenario "with article details and an attachment" do

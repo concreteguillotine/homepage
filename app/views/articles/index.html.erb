@@ -1,1 +1,13 @@
+<h1> Welcome to My Website!</h1>
+<p> My name is Seth Linex, I am an aspiring backend web developer with interests in encryption and cybersecurity. Below you will find my GitHub, LinkedIn, resume, and some articles and tutorials I've written.</p>
+
+<h1> List of Articles: </h1>
+
+<div class="articles">
+    <% @articles.each do |article| %>
+        <h2><%= link_to article.title, article %></h2>
+        <p><%= article.created_at %></p>
+    <% end %>
+</div>
+
 <%= link_to "Upload Article", new_article_path %>
