@@ -6,6 +6,5 @@
 <div class="articles">
     <% @articles.each do |article| %>
         <h2><%= link_to article.title, article %></h2>
-        <p><%= article.created_at %></p>
     <% end %>
 </div>

@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: article, local: true) do |form| %>
+<%= bootstrap_form_with(model: [:admin, article], local: true) do |form| %>
     <%= form.text_field :title %>
     <%= form.text_field :description %>
     <%= form.file_field :attachment, label: "File" %>

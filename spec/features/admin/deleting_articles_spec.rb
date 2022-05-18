@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Admins can delete articles" do
-    let(:admin) { FactoryBot.create(:admin) }
+    let!(:admin) { FactoryBot.create(:admin) }
     FactoryBot.create(:article, title: "Test Article")
 
     before do
