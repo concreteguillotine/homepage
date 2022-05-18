@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.feature "Only admins can see delete and edit article links" do
-    let!(:admin) { FactoryBot.create(:admin) }
     let(:article) { FactoryBot.create(:article) }
+    let!(:admin) { FactoryBot.create(:admin) }
 
     context "anonymous users" do
         scenario "cannot see the Edit Article link" do
