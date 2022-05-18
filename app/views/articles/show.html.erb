@@ -20,4 +20,16 @@
         </p>
     </div>
 <% end %>
+
+<% admins_only do %>
+    <ul class="actions">
+        <li><%= link_to "Edit Article", edit_article_path(@article),
+                class: "edit" %></li>
+
+        <li><%= link_to "Delete Article", admin_article_path(@article),
+                method: :delete,
+                data: { confirm: "Delete article?" },
+                class: "delete" %></li>
+    </ul>
+<% end %>
 </div>
