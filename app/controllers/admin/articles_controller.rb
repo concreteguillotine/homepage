@@ -20,6 +20,14 @@ class Admin::ArticlesController < Admin::ApplicationController
     @article = Article.find(params[:id])
   end
 
+  def update
+    @article = Article.find(params[:id])
+    @article.update(article_params)
+
+    flash[:notice] = "Article has been updated."
+    redirect_to @article
+  end
+
   def destroy
     @article = Article.find(params[:id])
     @article.destroy

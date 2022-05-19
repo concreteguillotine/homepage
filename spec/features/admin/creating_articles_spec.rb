@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "user can upload text documents" do
-    let!(:admin) { FactoryBot.create(:admin, :admin) }
+    let!(:admin) { FactoryBot.create(:admin) }
 
     before do
         login_as(admin)
