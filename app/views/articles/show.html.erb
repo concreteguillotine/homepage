@@ -1,13 +1,20 @@
 <div class="article">
+<% title @article.title, "Articles" %>
 <h1><%= @article.title %></h1>
-    <table>
-        <tr>
-            <td><%= @article.author.email %></td>
-        </tr>
-        <tr>
-            <th> Uploaded on: </th>
-            <td><%= @article.created_at %></td>
-        </tr>
+    <table class="attributes">
+            <tr>
+                <td><%= @article.author.email %></td>
+            </tr>
+            <tr>
+                <th> Uploaded on: </th>
+                <td><%= @article.created_at %></td>
+            </tr>
+        <% if @article.tags.any? %>
+            <tr>
+                <th> Tags: </th>
+                <td class="tags"><%= render @article.tags %></td>
+            </tr>
+        <% end %>
     </table>
 
 <p><%= simple_format(@article.description) %></p>

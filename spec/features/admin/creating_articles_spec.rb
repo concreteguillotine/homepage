@@ -8,11 +8,12 @@ RSpec.feature "user can upload text documents" do
         visit "/admin"
     end
 
-    scenario "with article details and an attachment" do
+    scenario "with article details, tags, and an attachment" do
 
         click_link "Upload Article"
         fill_in "Title", with: "First Program Tutorial"
         fill_in "Description", with: "A short tutorial on our first program"
+        fill_in "Tags", with: "tutorial, Rails"
         attach_file "File", "spec/fixtures/speed.txt"
         click_button "Create Article"
 
@@ -25,6 +26,11 @@ RSpec.feature "user can upload text documents" do
 
         within(".article .attachment") do
             expect(page).to have_content "speed.txt"
+        end
+
+        within(".article .tags") do
+            expect(page).to have_content "tutorial"
+            expect(page).to have_content "Rails"
         end
     end
 end

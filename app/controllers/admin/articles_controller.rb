@@ -12,7 +12,12 @@ class Admin::ArticlesController < Admin::ApplicationController
           flash[:notice] = "Article has been uploaded!"
           redirect_to @article
       else
+          flash.now[:alert] = "Article has not been uploaded."
+          render "new"
+      end
 
+      @article.tags = params[:tag_names].split(",").map do |tag|
+        Tag.find_or_initialize_by(name: tag.strip)
       end
   end
 
@@ -41,4 +46,11 @@ class Admin::ArticlesController < Admin::ApplicationController
   def article_params
       params.require(:article).permit(:title, :description, :attachment)
   end
+
+  def set_article
+    @article = Article.find(params[:id])
+rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The article you were looking for could not be found."
+    redirect_to articles_path
+end
 end
