@@ -28,6 +28,20 @@
     </div>
 <% end %>
 
+<div class="comments">
+    <header>
+        <h3> Comments </h3>
+    </header>
+
+<% comments = @article.comments.persisted.ordered %>
+<% if comments.any? %>
+    <%= render comments %>
+<% else %>
+    <p> No comments, yet! </p>
+<% end %>
+
+<%= render "comments/form", article: @article, comment: @comment %>
+
 <% admins_only do %>
     <ul class="actions">
         <li><%= link_to "Edit Article", edit_admin_article_path(@article),

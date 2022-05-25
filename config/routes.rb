@@ -10,5 +10,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "articles#index"
 
-  resources :articles, only: [:index, :show] 
+  resources :articles, only: [:index, :show, :edit, :update] do
+    resources :comments 
+  end
+
+  scope path: "articles/:article_id", as: :article do
+    resources :comments, only: [:create]
+  end
 end

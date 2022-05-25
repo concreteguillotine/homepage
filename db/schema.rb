@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_21_213646) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_211232) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -68,6 +68,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_213646) do
     t.index ["tag_id", "article_id"], name: "index_articles_tags_on_tag_id_and_article_id", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "name", default: "Anonymous"
+    t.index ["article_id"], name: "index_comments_on_article_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
   end
@@ -75,4 +84,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_213646) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "admins", column: "author_id"
+  add_foreign_key "comments", "articles"
 end
