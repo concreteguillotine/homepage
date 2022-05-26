@@ -6,4 +6,15 @@
     <div class="text">
         <%= simple_format(comment.text) %>
     </div>
+
+    <% admins_only do %>
+
+    <ul class="actions">
+    <li><%= button_to "Delete Comment", admin_comment_path(comment),
+                method: :delete,
+                data: { confirm: "Delete comment?" },
+                class: "delete" %></li>
+    </ul>
+    
+    <% end %>
 </div>

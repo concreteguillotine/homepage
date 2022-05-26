@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root 'application#index'
 
     resources :articles, except: [:index, :show]
+    resources :comments, only: [:destroy]
   end
   devise_for :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,6 +16,6 @@ Rails.application.routes.draw do
   end
 
   scope path: "articles/:article_id", as: :article do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
 end
