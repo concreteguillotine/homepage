@@ -7,6 +7,8 @@ class Admin::ArticlesController < Admin::ApplicationController
   def create
       @article = Article.new(article_params)
       @article.author = current_admin
+      @article.tags = processed_tags
+
 
       if @article.save
           flash[:notice] = "Article has been uploaded!"
@@ -14,11 +16,7 @@ class Admin::ArticlesController < Admin::ApplicationController
       else
           flash.now[:alert] = "Article has not been uploaded."
           render "new"
-      end
-
-      @article.tags = params[:tag_names].split(",").map do |tag|
-        Tag.find_or_initialize_by(name: tag.strip)
-      end
+      end      
   end
 
   def edit
@@ -28,6 +26,8 @@ class Admin::ArticlesController < Admin::ApplicationController
   def update
     @article = Article.find(params[:id])
     @article.update(article_params)
+
+    @article.tags << processed_tags
 
     flash[:notice] = "Article has been updated."
     redirect_to @article
@@ -49,8 +49,14 @@ class Admin::ArticlesController < Admin::ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
-rescue ActiveRecord::RecordNotFound
+  rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The article you were looking for could not be found."
     redirect_to articles_path
-end
+  end
+
+  def processed_tags
+    params[:tag_names].split(",").map do |tag|
+      Tag.find_or_initialize_by(name: tag.strip)
+    end
+  end
 end
