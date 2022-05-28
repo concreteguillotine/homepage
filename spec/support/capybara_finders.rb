@@ -11,4 +11,8 @@ module CapybaraFinders
     def tag(content)
         find("div.tag", text: content)
     end
+
+    def edittag(content)
+        find("div.edittag", text: content)
+    end
 end

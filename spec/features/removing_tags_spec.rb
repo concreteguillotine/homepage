@@ -12,12 +12,14 @@ RSpec.feature "admins can remove tags from articles" do
     before do
         login_as(admin)
         visit article_path(article)
+        click_link "Edit Article"
     end
 
     scenario "successfully", js: true do
-        within tag("Delete please") do
+        within edittag("Delete please") do
             click_link "Remove tag"
         end
+        expect(page).to have_content "Editing Article"
         expect(page).to_not have_content "Delete please"
     end
 end

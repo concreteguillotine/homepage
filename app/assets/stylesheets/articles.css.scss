@@ -2,17 +2,20 @@
 @import "rails_bootstrap_forms";
 @import "font-awesome";
 
-.tag {
+.tag, .edit-tag {
     @extend .rounded, .px-2, .py-1;
     display: inline-block;
     font-size: 110%;
     color: black;
+}
+
+.edittag { 
     a {
-        color: black;
-        &.remove {
-            font-family: "FontAwesome";
-            @extend .fa-close;
-            text-decoration: none;
+    color: black;
+    &.remove {
+        font-family: "FontAwesome";
+        @extend .fa-close;
+        text-decoration: none;
         }
-    }
+    } 
 }
