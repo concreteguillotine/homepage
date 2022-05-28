@@ -12,7 +12,7 @@
         <% if @article.tags.any? %>
             <tr>
                 <th> Tags: </th>
-                <td class="tags"><%= render @article.tags %></td>
+                <td class="tags"><%= render @article.tags, article: @article %></td>
             </tr>
         <% end %>
     </table>

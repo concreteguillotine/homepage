@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   scope path: "articles/:article_id", as: :article do
     resources :comments, only: [:create, :destroy]
+    get "tags/remove/:id", to: "tags#remove", as: :remove_tag
   end
 end

@@ -1,5 +1,6 @@
 <div class="tag">
-    <%= link_to "<span></span>".html_safe, "#", class: "remove",
-    title: "remove" %>
+    <%= link_to "<span></span>".html_safe, article_remove_tag_path(article, tag), 
+    method: :get, remote: true, 
+    class: "remove", title: "Remove tag" %>
     <%= tag.name %>
 </div>
